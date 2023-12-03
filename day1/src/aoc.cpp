@@ -1,31 +1,10 @@
+#include "../../shared/input.hpp"
 #include <fstream>
 #include <functional>
 #include <iostream>
 #include <numeric>
 #include <string>
 #include <vector>
-
-std::vector<std::string> parseInput(std::string filename) {
-    std::vector<std::string> input;
-
-    std::ifstream file(filename);
-    std::string input_str;
-    while (std::getline(file, input_str)) {
-        input.push_back(input_str);
-    }
-
-    return input;
-}
-
-std::vector<size_t> callFunctionWithInputs(std::function<size_t(std::string, size_t)> func, std::vector<std::string> param1, std::vector<size_t> param2) {
-    std::vector<size_t> results(param1.size());
-
-    for (size_t i = 0; i < param1.size(); i++) {
-        results.push_back(func(param1[i], param2[i]));
-    }
-
-    return results;
-}
 
 char wordToChar(std::string word) {
     if (word == "zero")
@@ -110,7 +89,7 @@ char findLastDigit(std::string str, std::vector<std::string> digits) {
 }
 
 int main(int argc, char** argv) {
-    std::vector<std::string> input = parseInput(argv[1]);
+    std::vector<std::string> input = aoc::parseInput(argv[1]);
     size_t sum = 0;
     std::vector<std::string> digits{
         "zero",
