@@ -17,12 +17,12 @@ inline std::vector<std::string> parseInput(std::string filename) {
     return input;
 }
 
-inline std::vector<size_t> extractNumsFromString(std::string str) {
-    std::vector<size_t> nums;
+inline std::vector<int> extractNumsFromString(std::string str) {
+    std::vector<int> nums;
     std::stringstream ss;
     ss << str;
     std::string word;
-    size_t tmp_num;
+    int tmp_num;
     while (!ss.eof()) {
         ss >> word;
         if (std::stringstream(word) >> tmp_num) {

@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
     for (std::string start : startingNodes) {
         std::vector<std::tuple<size_t, size_t>> possibleSteps;
         size_t steps = 0;
-        std::string curr = start;
+        std::string curr = std::move(start);
         size_t firstEndIndex = 0;
         for (int i = 0;; i = (i + 1) % instructions.size()) {
             if (isEndNode(curr, endNodes)) {
