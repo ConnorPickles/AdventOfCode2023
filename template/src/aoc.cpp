@@ -1,4 +1,5 @@
 #include "../../shared/input.hpp"
+#include "../../shared/printing.hpp"
 #include <iostream>
 
 int main(int argc, char** argv) {

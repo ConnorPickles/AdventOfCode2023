@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
     }
 
     std::vector<std::vector<std::tuple<size_t, size_t>>> allPossibleSteps;
-    for (std::string start : startingNodes) {
+    for (const std::string& start : startingNodes) {
         std::vector<std::tuple<size_t, size_t>> possibleSteps;
         size_t steps = 0;
         std::string curr = std::move(start);
