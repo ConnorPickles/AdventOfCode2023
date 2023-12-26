@@ -1,11 +1,13 @@
+#include <exception>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 
 namespace aoc {
 
-inline std::vector<std::string> parseInput(std::string filename) {
+inline std::vector<std::string> parseInput(const std::string& filename) {
     std::vector<std::string> input;
 
     std::ifstream file(filename);
@@ -17,7 +19,7 @@ inline std::vector<std::string> parseInput(std::string filename) {
     return input;
 }
 
-inline std::vector<int> extractNumsFromString(std::string str) {
+inline std::vector<int> extractNumsFromString(const std::string& str) {
     std::vector<int> nums;
     std::stringstream ss;
     ss << str;
@@ -34,12 +36,13 @@ inline std::vector<int> extractNumsFromString(std::string str) {
     return nums;
 }
 
-inline std::vector<std::string> splitStringIntoWords(std::string str) {
+
+inline std::vector<std::string> splitString(const std::string& str, char delim) {
     std::vector<std::string> words;
     std::string word = "";
 
     for (char c : str) {
-        if (c == ' ') {
+        if (c == delim) {
             if (word == "") {
                 continue;
             }
@@ -52,6 +55,24 @@ inline std::vector<std::string> splitStringIntoWords(std::string str) {
     words.push_back(word);
 
     return words;
+}
+
+inline std::vector<std::string> splitStringIntoWords(const std::string& str) {
+    return splitString(str, ' ');
+}
+
+inline std::vector<int> parseInts(const std::vector<std::string>& strings) {
+    std::vector<int> output;
+    try {
+        for (const std::string& str : strings) {
+            output.push_back(stoi(str));
+        }
+    } catch (std::exception error) {
+        std::cout << "Error while trying to parse strings to ints:\n" << error.what() << std::endl;
+        exit(1);
+    }
+
+    return output;
 }
 
 } // namespace aoc
