@@ -202,7 +202,7 @@ size_t newAnswer(size_t answer, const Bool2D& energized) {
 
 int main(int argc, char** argv) {
     Grid input = aoc::parseInput(argv[1]);
-    Bool2D energized(input.size(), std::vector<bool>(input[0].size(), false));
+    Bool2D energized;
     std::vector<Step> previousSteps;
     size_t answer = 0;
 
